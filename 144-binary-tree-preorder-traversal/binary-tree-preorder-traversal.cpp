@@ -12,18 +12,17 @@
 class Solution {
 
 private:
-    void f(TreeNode* root, vector<int>& ans){
-        if(!root) return;
-
-        ans.push_back(root->val);
-        f(root->left, ans);
-        f(root->right, ans);
+    void helper(TreeNode* node, vector<int>& ans){
+        if(!node) return;
+        ans.push_back(node->val);
+        helper(node->left, ans);
+        helper(node->right, ans);
     }
 
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> ans;
-        f(root, ans);
+        helper(root, ans);
         return ans;
     }
 };
